@@ -24,7 +24,7 @@ first agent task held for approval — in about half a minute:
 
 ## A working chat in ~5 minutes (no credentials)
 
-The fastest way to see IronClaw *work*: the offline **`mock-agent`** runs the full engage → sandbox →
+The fastest way to see IronClaw _work_: the offline **`mock-agent`** runs the full engage → sandbox →
 reply path with **no model key** and **no gVisor**, launching its per-conversation sandbox as a Docker
 (runc) container. Good for a laptop demo; not the sealed production posture (see the security note below).
 
@@ -86,7 +86,7 @@ This walks you from a clean clone to **submitting a change, approving it at the 
 and reading the audit log** — entirely on your machine, in `--dev` mode (loopback, no gVisor required).
 
 > **What you're seeing:** every mutation in IronClaw — persona, tools, packages, wiring, permissions,
-> mounts — is *held* at a deterministic gateway until a human approves it. There is no path that
+> mounts — is _held_ at a deterministic gateway until a human approves it. There is no path that
 > bypasses it. The quickstart makes that choke point concrete in a couple of commands.
 
 ---
@@ -95,8 +95,8 @@ and reading the audit log** — entirely on your machine, in `--dev` mode (loopb
 
 - **Go 1.23+** and a **C toolchain** — IronClaw builds with `CGO_ENABLED=1` (the encrypted-queue
   binding, SQLCipher, is unconditional). macOS: `xcode-select --install`. Debian/Ubuntu: `sudo apt-get install build-essential`.
-- **An Anthropic API key** (`ANTHROPIC_API_KEY`) — held host-side; it never enters a sandbox. *Optional
-  for this `--dev` walkthrough:* the gateway flow never calls a model, so `--dev` boots and serves
+- **An Anthropic API key** (`ANTHROPIC_API_KEY`) — held host-side; it never enters a sandbox. _Optional
+  for this `--dev` walkthrough:_ the gateway flow never calls a model, so `--dev` boots and serves
   `/healthz` with no key set. You'll want one once you wire a real agent to a provider.
 - **`openssl`** (almost always preinstalled) — used to mint a local API token.
 
@@ -120,7 +120,7 @@ This produces `bin/controlplane` (the host daemon) and `bin/ironctl` (the admin 
 If the build fails with an SQLite/cgo error, your C toolchain isn't set up — see Prerequisites.
 
 !!! tip "Prefer a prebuilt binary? Skip the build."
-    On macOS or Linux you can install the latest checksum-verified release instead of building:
+On macOS or Linux you can install the latest checksum-verified release instead of building:
 
     ```sh
     # Homebrew (macOS / Linux) — use the fully-qualified name (homebrew-core has an
@@ -151,6 +151,8 @@ change store and audit log are still durable files on disk (under the state dir,
 `~/Library/Caches/ironclaw/state/{changes,audit.jsonl}` on macOS), so the trail you build below survives a
 restart. Leave this running. You should see the daemon log that it has started and is serving on `127.0.0.1:8787`.
 
+For a full list of supported environment variables, see the [environment variable reference](env-reference.md).
+
 ## 3. Point `ironctl` at it (Terminal 2)
 
 ```sh
@@ -165,7 +167,7 @@ Confirm connectivity by reading the (empty) audit log:
 ./bin/ironctl audit --limit 5
 ```
 
-## 4. Submit a change — watch it get *held*
+## 4. Submit a change — watch it get _held_
 
 `--dev` seeds a `default` agent group. Submit a persona change for it:
 

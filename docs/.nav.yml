@@ -1,0 +1,58 @@
+# Root navigation fragment for the IronClaw docs site.
+#
+# This is the canonical source of the site `nav`. It is assembled at build time
+# by docs/hooks.py (there is deliberately NO `nav:` block in mkdocs.yml). Churn-
+# heavy directories (providers/, tutorials/, integrations/) are referenced by
+# name and resolve to their own `.nav.yml` fragment, so adding a page there
+# never edits a line shared with unrelated docs PRs.
+#
+# Item forms (see docs/hooks.py `_resolve_items`):
+#   - "Title: page.md"   a page
+#   - "Title: subdir"    a section pulled from subdir/.nav.yml
+#   - "Title:" + list    an inline nested section
+#   - "*.md"             every remaining page in this dir, auto-titled from its H1
+nav:
+  - Home: index.md
+  - Why IronClaw: comparison.md
+  - Get Started:
+      - Quickstart: quickstart.md
+      - Environment reference: env-reference.md
+      - Building from source: building.md
+      - Production deployment: deployment.md
+      - Observability (metrics): observability.md
+      - Troubleshooting: troubleshooting.md
+      - FAQ: faq.md
+  - Scan any container: scan.md
+  - Scan in CI (GitHub Action): scan-action.md
+  - Container isolation scores: scores
+  - Model providers: providers
+  - Tutorials: tutorials
+  - Examples & use cases: examples.md
+  - Learn (agent security): learn
+  - Compare: compare
+  - Blog: blog
+  - Concepts:
+      - IronClaw, Explained: ironclaw-explained.md
+      - Architecture: architecture.md
+      - The frozen contract: contract.md
+      - MCP servers: mcp.md
+  - Channels:
+      - Channel adapters: channels.md
+      - Writing a channel adapter: writing-a-channel-adapter.md
+  - Skills: skills.md
+  - Integrations: integrations
+  - MCP Server (for clients): mcp-server
+  - Social proof: social-proof.md
+  - Security & Trust:
+      - Overview: security.md
+      - Isolation, proven: security-isolation.md
+      - Why we run AI agents in gVisor: gvisor-deep-dive.md
+      - Credential vault: vault.md
+      - Breaking our own sandbox: breaking-our-own-sandbox.md
+      - Threat model: threat-model.md
+      - Performance & footprint: benchmarks.md
+  - Reference:
+      - API (OpenAPI): reference/api.md
+      - Release runbook: release-runbook.md
+      - PR review & reviewer identity: pr-review-process.md
+      - Roadmap: roadmap.md
